@@ -1,5 +1,6 @@
 import 'package:e_commerce/controller/mainscreen_provider.dart';
 import 'package:e_commerce/views/shared/bottom_nav.dart';
+import 'package:e_commerce/views/shared/curved_navBar.dart';
 import 'package:e_commerce/views/ui/cartpage.dart';
 import 'package:e_commerce/views/ui/favourite_page.dart';
 import 'package:e_commerce/views/ui/homepage.dart';
@@ -20,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
     const Homepage(),
     const Searchpage(),
     const FavouritePage(),
-     CartPage(),
+    const CartPage(),
     const Profile(),
   ];
   @override
@@ -30,7 +31,8 @@ class _MainScreenState extends State<MainScreen> {
         return Scaffold(
             backgroundColor: const Color(0xFFE2E2E2),
             body: pageList[mainScreenNotifier.pageIndex],
-            bottomNavigationBar: const BottomNavBar());
+            bottomNavigationBar: const CurvedNavBar());
+            // bottomNavigationBar: const BottomNavBar());
       },
     );
   }

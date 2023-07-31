@@ -23,26 +23,26 @@ class _ProductPageState extends State<ProductPage> {
   final PageController pageController = PageController();
   double _rating = 0;
 
- 
- @override
- void initState() {
-   super.initState();
- }
-
-  
-
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-      int actPage = 0 ;
-
-    var productNotifier= Provider.of<ProductNotifier>(context , listen:true);
+    var productNotifier = Provider.of<ProductNotifier>(context, listen: true);
     productNotifier.getShoes(widget.category, widget.id);
 
-    var cartProvider= Provider.of<CartProvider>(context);
+    var cartProvider = Provider.of<CartProvider>(context);
 
     var favoritesNotifier = Provider.of<FavoritesNotifier>(context);
     favoritesNotifier.getFavourite();
+
+    // error in image display 
+    void pageChanged(int page) {
+      // productNotifier.activepage = page;
+      debugPrint("Page : $page");
+    }
 
     return Scaffold(
         body: FutureBuilder<Sneakers>(
@@ -103,13 +103,7 @@ class _ProductPageState extends State<ProductPage> {
                                         itemCount: sneakers!.imageUrl.length,
                                         scrollDirection: Axis.horizontal,
                                         controller: pageController,
-                                        onPageChanged: (page) {
-                                        
-                                          actPage = page ;
-                                          // productNotifier.activePa
-                                          //ge = page;
-                                          debugPrint("page : $page");
-                                        },
+                                        onPageChanged: pageChanged,
                                         itemBuilder: (context, index) {
                                           return Stack(
                                             children: [
@@ -124,7 +118,7 @@ class _ProductPageState extends State<ProductPage> {
                                                 child: CachedNetworkImage(
                                                   imageUrl:
                                                       sneakers.imageUrl[index],
-                                                      fadeInCurve: Curves.ease,
+                                                  fadeInCurve: Curves.ease,
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -153,7 +147,8 @@ class _ProductPageState extends State<ProductPage> {
                                                     color: Colors.green);
                                               });
 
-                                              Navigator.pushNamed(context,'/fav');
+                                              Navigator.pushNamed(
+                                                  context, '/fav');
                                             } else {
                                               favoritesNotifier.createFav({
                                                 "id": sneakers.id,
@@ -166,7 +161,8 @@ class _ProductPageState extends State<ProductPage> {
                                               setState(() {});
                                             }
                                           },
-                                          child: favoritesNotifier.ids.contains(sneakers.id)
+                                          child: favoritesNotifier.ids
+                                                  .contains(sneakers.id)
                                               ? const Icon(Icons.favorite,
                                                   color: Colors.green)
                                               : const Icon(
@@ -192,11 +188,9 @@ class _ProductPageState extends State<ProductPage> {
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 4),
                                             child: CircleAvatar(
-                                              backgroundColor:
-                                                  actPage !=
-                                                          index
-                                                      ? Colors.grey
-                                                      : Colors.black,
+                                              backgroundColor: productNotifier.activepage != index
+                                                  ? Colors.grey
+                                                  : Colors.black,
                                               radius: 5,
                                             ),
                                           );

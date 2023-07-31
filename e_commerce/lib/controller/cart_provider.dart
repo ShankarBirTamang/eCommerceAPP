@@ -6,10 +6,8 @@ class CartProvider with ChangeNotifier {
   //from the Hive database.
   final _cartBox = Hive.box('cart_box');
 
-  int _counter = 0;
   List<dynamic> _cart = [];
 
-  int get counter => _counter;
   List<dynamic> get cart => _cart;
 
   set cart(List<dynamic> newCart) {

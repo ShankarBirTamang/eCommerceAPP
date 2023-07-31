@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         '/main':(context) => const MainScreen(),
         '/home':(context) => const Homepage(),
         '/search':(context) => const Searchpage(),
-        '/cart':(context) =>   CartPage(),
+        '/cart':(context) => const CartPage(),
         '/fav':(context) => const FavouritePage(),
         '/profile':(context) => const Profile(),
       },

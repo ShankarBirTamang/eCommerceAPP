@@ -10,7 +10,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
-  CartPage({Key? key}) : super(key: key);
+ const CartPage({Key? key}) : super(key: key);
 
   @override
   State<CartPage> createState() => _CartPageState();

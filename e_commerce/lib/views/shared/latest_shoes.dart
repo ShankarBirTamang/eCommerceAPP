@@ -1,7 +1,11 @@
+import 'package:e_commerce/controller/product_provider.dart';
 import 'package:e_commerce/models/sneakers_model.dart';
 import 'package:e_commerce/views/shared/stagger_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
+
+import '../ui/product_page.dart';
 
 class LatestShoes extends StatelessWidget {
   const LatestShoes({
@@ -13,6 +17,8 @@ class LatestShoes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productNotifier = Provider.of<ProductNotifier>(context);
+
     return FutureBuilder<List<Sneakers>>(
       future: _male,
       builder: (context, snapshot) {
@@ -31,11 +37,23 @@ class LatestShoes extends StatelessWidget {
             itemCount: male!.length,
             itemBuilder: (context, index) {
               final shoe = snapshot.data![index];
-              return StaggerTile(
-                  index: index,
-                  imageUrl: shoe.imageUrl[1],
-                  name: shoe.name,
-                  price: shoe.price);
+              return GestureDetector(
+                onTap: () {
+                          productNotifier.shoeSizes = shoe.sizes ;
+                          // debugPrint("${productNotifier.shoeSizes}");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductPage(
+                                    id: shoe.id, category: shoe.category),
+                              ));
+                        },
+                child: StaggerTile(
+                    index: index,
+                    imageUrl: shoe.imageUrl[1],
+                    name: shoe.name,
+                    price: shoe.price),
+              );
             },
           );
         }

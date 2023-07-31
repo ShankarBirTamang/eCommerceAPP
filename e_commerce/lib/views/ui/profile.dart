@@ -5,7 +5,7 @@ class Profile extends StatefulWidget {
   const Profile({ Key? key }) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState();
+  State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
