@@ -1,8 +1,7 @@
-import 'package:e_commerce/controller/product_provider.dart';
-import 'package:e_commerce/views/shared/home_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce/views/shared/appstyle.dart';
 import 'package:provider/provider.dart';
+
+import '../shared/export.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);

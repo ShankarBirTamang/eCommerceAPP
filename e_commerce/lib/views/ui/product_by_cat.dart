@@ -1,10 +1,7 @@
-import 'package:e_commerce/controller/product_provider.dart';
-import 'package:e_commerce/views/shared/appstyle.dart';
-import 'package:e_commerce/views/shared/category_btn.dart';
-import 'package:e_commerce/views/shared/latest_shoes.dart';
-import 'package:e_commerce/views/shared/my_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../shared/export.dart';
 
 class ProductByCat extends StatefulWidget {
   const ProductByCat({super.key, required this.tabIndex});

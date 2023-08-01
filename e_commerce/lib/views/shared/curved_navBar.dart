@@ -28,15 +28,15 @@ class _CurvedNavBarState extends State<CurvedNavBar> {
       color: Colors.white,
     ),
     const Icon(
-      Icons.shopping_cart,
+      Icons.people,
       color: Colors.white,
       size: 25,
     ),
-    const Icon(
-      Icons.settings,
-      size: 25,
-      color: Colors.white,
-    ),
+    // const Icon(
+    //   Icons.settings, 
+    //   size: 25,
+    //   color: Colors.white,
+    // ),
   ];
   int index = 0;
   @override

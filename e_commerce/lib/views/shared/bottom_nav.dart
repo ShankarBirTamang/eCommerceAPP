@@ -51,19 +51,19 @@ class BottomNavBar extends StatelessWidget {
                         ? Icons.favorite
                         : Icons.favorite_border,
                   ),
+                  // BottomNav(
+                  //   onTap: () {
+                  //     mainScreenNotifier.pageIndex = 3;
+                  //   },
+                  //   icon: mainScreenNotifier.pageIndex == 3
+                  //       ? Icons.shopping_cart
+                  //       : Icons.shopping_cart_outlined,
+                  // ),
                   BottomNav(
                     onTap: () {
                       mainScreenNotifier.pageIndex = 3;
                     },
                     icon: mainScreenNotifier.pageIndex == 3
-                        ? Icons.shopping_cart
-                        : Icons.shopping_cart_outlined,
-                  ),
-                  BottomNav(
-                    onTap: () {
-                      mainScreenNotifier.pageIndex = 4;
-                    },
-                    icon: mainScreenNotifier.pageIndex == 4
                         ? Icons.person
                         : Icons.person_outline,
                   ),
