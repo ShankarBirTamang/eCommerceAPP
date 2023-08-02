@@ -2,9 +2,12 @@ const Product = require('../models/Product');
 
 module.exports = {
     createProduct: async (req, res) => {
-        const newProduct = new Product(req.body)
+        const products = req.body;
         try {
-            await newProduct.save();
+            for (const product of products) {
+                const newProduct = new Product(product)
+                await newProduct.save();
+            }
             res.status(200).json("product created successfully")
         } catch (error) {
             res.status(500).json("failed to create product")
@@ -14,6 +17,7 @@ module.exports = {
 
         try {
             const products = await Product.find().sort({ createdAt: -1 })
+
             res.status(200).json(products)
         } catch (error) {
             res.status(500).json("failed to get the products")

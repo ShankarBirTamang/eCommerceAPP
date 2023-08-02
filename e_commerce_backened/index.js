@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
+const cors = require("cors")
 const productRoute = require('./routes/products')
 const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users')
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URL).then(()=>console.log("db connected")).ca
 
 //Middleware setup
 app.use(express.json({limit:'10mb'}));
+app.use(cors());
 app.use(express.urlencoded({limit:'10mb',extended : true}))
 
 
