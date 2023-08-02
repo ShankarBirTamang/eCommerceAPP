@@ -11,7 +11,6 @@ import 'package:http/http.dart';
 // This class fetches the data from the JSON file and return it to the app
 
 class Helper {
-      // var url = "https://localhost:3005/api/products/";
 
   Future<List<Sneakers>> getMaleSneakers() async {
     var url = Uri.http(Config.apiUrl, Config.sneakers);
@@ -19,7 +18,6 @@ class Helper {
 
     try {
       var response = await client.get(url);
-      // final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         final sneakerList = sneakersFromJson(response.body);
         var maleSneakers = sneakerList
@@ -58,7 +56,7 @@ class Helper {
       if (response.statusCode == 200) {
         final sneakerList = sneakersFromJson(response.body);
         var femaleSneakers = sneakerList
-            .where((element) => element.category == "Wpmen's Running")
+            .where((element) => element.category == "Women's Running")
             .toList();
         return femaleSneakers;
       } else {
