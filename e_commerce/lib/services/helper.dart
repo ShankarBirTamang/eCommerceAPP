@@ -51,7 +51,6 @@ class Helper {
 
     try {
       var response = await client.get(url);
-      // final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         final sneakerList = sneakersFromJson(response.body);
@@ -75,7 +74,6 @@ class Helper {
 
     try {
       var response = await client.get(url);
-      // final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
         final sneakerList = sneakersFromJson(response.body);
